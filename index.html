@@ -8,12 +8,18 @@
     .line{
       text-decoration:line-through;
     }
+    #container{
+      background-color:lightgreen;
+      display:inline-block;
+      padding:10px;
+      display:none;
+    }
   </style>
 </head>
 <body>
   <h1>Add Todo</h1>
   <input id="input" autocomplete="off" type="text"><button id="addBtn">Add</button> 
-  
+  <br>
   <div id="container">  
        
   </div>
@@ -21,7 +27,7 @@
   <script>
     let addBtn=document.getElementById('addBtn');
     let container=document.getElementById('container');
-      
+    let counter=0; 
  
     function remove(){
       let icon=document.getElementsByClassName('icon');
@@ -29,18 +35,30 @@
       
       for(let i=0;i<icon.length;i++){
         icon[i].onclick=function(){
+          counter--;
           icon[i].parentElement.style.display='none';
+          
+          if(counter==0){
+            display("none");
+          }
         }
       } 
+      
     }  
     
-    
+    function display(value){
+      document.getElementById('container').style.display=value;
+    }
     
     addBtn.onclick=function(){
+      
       let text=document.getElementById("input").value
       if(text==""){
         alert("Add a todo");
       }else{
+        counter++;
+        display("inline-block");
+        
         let text=document.getElementById('input').value;
         let div=document.createElement('DIV');
         div.className='todo';
@@ -70,4 +88,5 @@
 </html>
   
   
- 
+  
+  
