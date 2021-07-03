@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Add Todo</title>
+  <style>
+    .line{
+      text-decoration:line-through;
+    }
+  </style>
 </head>
 <body>
   <h1>Add Todo</h1>
@@ -37,14 +42,27 @@
         alert("Add a todo");
       }else{
         let text=document.getElementById('input').value;
-        let p=document.createElement('P');
-        p.className='todo';
-        p.innerHTML=`${text} <button class="icon">X</button>`;
-        container.appendChild(p);
+        let div=document.createElement('DIV');
+        div.className='todo';
+        div.innerHTML=`<span class="task">${text}</span> <button class="done-btn">Done</button> <button class="icon">X</button>`;
+        container.appendChild(div);
         document.getElementById('input').value="";
         
-        remove()
+        complete();
+        remove();
+        
       }
+    }
+    function complete(){
+        let doneBtn=document.getElementsByClassName("done-btn");
+        let task=document.getElementsByClassName("task");
+        for(let i=0;i<doneBtn.length;i++){
+            doneBtn[i].onclick=function(){
+              task[i].classList.toggle('line');
+              doneBtn[i].innerHTML=doneBtn[i].innerHTML=="Done"?"Undo":"Done";
+            }
+        }
+        
     }
     
   </script>
@@ -52,9 +70,4 @@
 </html>
   
   
-  
-  
-  
-  
-  
-  
+ 
