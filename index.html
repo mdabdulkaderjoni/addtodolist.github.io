@@ -214,7 +214,8 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       document.getElementById('container').style.display=value;
     }
     
-    
+    addBtn.onclick=todoEvent;
+
     input.addEventListener("keyup", function(event) {  
         if(event.keyCode === 13) {
             todoEvent();
