@@ -69,7 +69,7 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       right:8px;
       font-size:22px;
       padding:5px 10px;
-      margin-top:2px;
+      
       background-color:#191970;
       border-radius:2px;
       color:white;
@@ -107,6 +107,10 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       font-size:20px;
       margin-right:10px;
       padding:5px 8px;
+    }
+    .task-value{
+      color:red;
+      font-weight:600;
     }
     .todo button{
       font-size:16px;
@@ -152,9 +156,9 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
 <div class="all-todos">
    
   <div class="dash-board">
-    <p>Total Task <span id="total-task">0</span></p>
-    <p>Task Completed <span id="completed-task">0</span></p>
-    <p>Task Remaining <span id="remaining-task">0</span><p>
+    <p>Total Task <span id="total-task" class="task-value">0</span></p>
+    <p>Task Completed <span id="completed-task" class="task-value">0</span></p>
+    <p>Task Remaining <span id="remaining-task" class="task-value">0</span><p>
   </div>
   
   <div id="container">  </div>
