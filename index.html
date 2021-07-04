@@ -5,44 +5,184 @@
   <meta name="viewport" content="width=device-width">
   <title>Add Todo</title>
   <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    body{
+      display:flex;
+      justify-content:center;
+      
+      background: #000428;  /* fallback for old browsers */
+      
+background: -webkit-linear-gradient(left, #004e92, #000428);
+background: -moz-linear-gradient(left, #004e92, #000428);
+background: -o-linear-gradient(left, #004e92, #000428);
+background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+    .header{
+      
+      width:60%
+    }
+    .header h1{
+      color:white;
+    }
+    .app{
+      margin-top:80px;
+      border-radius:3px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+      width:400px;
+      
+      padding:10px;
+      
+    }
+    .input-field{
+      padding:5px;
+      background-color:white;
+      display:inline-block;
+      height:auto;
+      width:430px;
+      display:flex;
+      position:relative;
+      box-sizing:border-box;
+      margin-bottom:10px;
+      border-radius:3px;
+      
+    }
+    .input-field input{
+      height:35px;
+      width:82%;
+      font-size:22px;
+      border:2px solid white;
+      background-color:white;
+      outline: 0;
+      border-width: 0 0 2px;
+      border-color: white;
+      
+    }
+    input:focus {
+      border-color:black;
+    }
+    .input-field button{
+      position:absolute;
+      right:8px;
+      font-size:22px;
+      padding:5px 10px;
+      margin-top:2px;
+      background-color:#191970;
+      border-radius:2px;
+      color:white;
+      border:none;
+      
+    }
+    .all-todos{
+      background-color:white;
+      border-radius:3px;
+    }
+    .dash-board{
+      display:flex;
+    }
+    .dash-board p{
+      font-size:18px;
+      font-family:arial;
+      
+      padding:15px 6px;
+    }
     .line{
       text-decoration:line-through;
     }
     #container{
-      background-color:lightgreen;
+      font-family:arial;
       display:inline-block;
       padding:10px;
       display:none;
     }
+    .todo span{
+      font-size:20px;
+      margin-right:10px;
+      padding:5px 8px;
+    }
+    .todo button{
+      font-size:16px;
+      background-color:#6B49A2;
+      padding:5px 8px;
+      font-weight:500;
+      border:none;
+      outline:none;
+      border-radius:3px;
+      color:white;
+    }
+    
+    
   </style>
 </head>
 <body>
-  <h1>Add Todo</h1>
-  <input id="input" autocomplete="off" type="text"><button id="addBtn">Add</button> 
-  <br>
-  <div id="container">  
-       
+<div>
+  <div class="header">
+    <h1>Todo App</h1>
+    <div class="input-field">
+     
+      <input id="input" autocomplete="off" type="text">
+      <button id="addBtn">Add</button> 
+  
+    </div> 
   </div>
   
+<div class="all-todos">
+   
+  <div class="dash-board">
+    <p>Total Task <span id="total-task">0</span></p>
+    <p>Task Completed <span id="completed-task">0</span></p>
+    <p>Task Remaining <span id="remaining-task">0</span><p>
+  </div>
+  
+  <div id="container">  </div>
+    </div>
+</div>
   <script>
     let addBtn=document.getElementById('addBtn');
     let container=document.getElementById('container');
-    let counter=0; 
- 
+    
+    let total=0; 
+    let completed=0;
+    let remaining=0;
+    
+    function totalTask(){
+      let totalTask=document.getElementById('total-task');
+      totalTask.innerHTML=total;
+    }
+    function completedTask(){
+      let completedTask=document.getElementById('completed-task');
+      completedTask.innerHTML=completed;
+    }
+    function remainingTask(){     
+      let totalTask=document.getElementById('remaining-task');
+      totalTask.innerHTML=total-completed;
+    }
+    
     function remove(){
       let icon=document.getElementsByClassName('icon');
       let todo=document.getElementsByClassName('todo');
-      
+      remainingTask();
       for(let i=0;i<icon.length;i++){
         icon[i].onclick=function(){
-          counter--;
+          if(completed>0){
+            completed--;
+            completedTask();
+          }
+          
+          total--;
+          totalTask();
           icon[i].parentElement.style.display='none';
           
-          if(counter==0){
+          if(total==0){
             display("none");
           }
+          remainingTask();
         }
-      } 
+      }
+      
       
     }  
     
@@ -56,7 +196,7 @@
       if(text==""){
         alert("Add a todo");
       }else{
-        counter++;
+        total++;
         display("inline-block");
         
         let text=document.getElementById('input').value;
@@ -66,18 +206,32 @@
         container.appendChild(div);
         document.getElementById('input').value="";
         
-        complete();
+        done();
         remove();
+        totalTask();
+        remainingTask();
         
       }
     }
-    function complete(){
+    function done(){
+        
         let doneBtn=document.getElementsByClassName("done-btn");
         let task=document.getElementsByClassName("task");
         for(let i=0;i<doneBtn.length;i++){
             doneBtn[i].onclick=function(){
+              if(doneBtn[i].innerHTML=="Done"){
+                completed++;
+                completedTask();
+                remainingTask();
+              }else{
+                completed--;
+                completedTask();
+                remainingTask();
+              }
+              
               task[i].classList.toggle('line');
               doneBtn[i].innerHTML=doneBtn[i].innerHTML=="Done"?"Undo":"Done";
+              
             }
         }
         
