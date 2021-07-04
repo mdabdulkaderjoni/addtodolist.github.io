@@ -22,7 +22,10 @@ background: -o-linear-gradient(left, #004e92, #000428);
 background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     }
-    
+    .main-app{
+      width:450px;
+      
+    }
     .header h1{
       color:white;
       text-align:center;
@@ -39,7 +42,7 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       background-color:white;
       display:inline-block;
       height:auto;
-      width:430px;
+      width:100%;
       display:flex;
       position:relative;
       box-sizing:border-box;
@@ -90,6 +93,7 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       text-decoration:line-through;
     }
     #container{
+      width:100%;
       font-family:arial;
       display:inline-block;
       padding:10px;
@@ -97,6 +101,7 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
     }
     .todo{
       margin-bottom:10px;
+      width:100%;
     }
     .todo span{
       font-size:20px;
@@ -113,10 +118,7 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       border-radius:3px;
       color:white;
     }
-    .main-app{
-      width:430px;
-      
-    }
+    
     @media only screen and (max-width: 450px){
       .header, .head-text, .input-field, .all-todos, .dash-board{
         width:100%;
