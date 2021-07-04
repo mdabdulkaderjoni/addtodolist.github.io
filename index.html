@@ -10,33 +10,30 @@
       padding:0;
     }
     body{
+      
       display:flex;
       justify-content:center;
       
       background: #000428;  /* fallback for old browsers */
-      
+      padding:20px 0;
 background: -webkit-linear-gradient(left, #004e92, #000428);
 background: -moz-linear-gradient(left, #004e92, #000428);
 background: -o-linear-gradient(left, #004e92, #000428);
 background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     }
-    .header{
-      
-      width:60%
-    }
+    
     .header h1{
       color:white;
+      text-align:center;
+      
+      font-family:arial;
     }
-    .app{
-      margin-top:80px;
-      border-radius:3px;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    .head-text{
       width:400px;
-      
-      padding:10px;
-      
+      margin:10px 0;
     }
+    
     .input-field{
       padding:5px;
       background-color:white;
@@ -98,6 +95,9 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       padding:10px;
       display:none;
     }
+    .todo{
+      margin-bottom:10px;
+    }
     .todo span{
       font-size:20px;
       margin-right:10px;
@@ -113,14 +113,32 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       border-radius:3px;
       color:white;
     }
-    
+    .main-app{
+      width:430px;
+      
+    }
+    @media only screen and (max-width: 450px){
+      .header, .head-text, .input-field, .all-todos, .dash-board{
+        width:100%;
+      }
+      .main-app{
+        width:100%;
+        
+      }
+      body{
+        display:block;
+        padding:20px 5px;
+      }
+    }
     
   </style>
 </head>
 <body>
-<div>
+<div class="main-app">
   <div class="header">
-    <h1>Todo App</h1>
+    <div class="head-text">
+      <h1>Todo App</h1>
+    </div>
     <div class="input-field">
      
       <input id="input" autocomplete="off" type="text">
@@ -143,7 +161,7 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
   <script>
     let addBtn=document.getElementById('addBtn');
     let container=document.getElementById('container');
-    
+    let input=document.getElementById("input");
     let total=0; 
     let completed=0;
     let remaining=0;
@@ -190,7 +208,15 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
       document.getElementById('container').style.display=value;
     }
     
-    addBtn.onclick=function(){
+    
+    input.addEventListener("keyup", function(event) {  
+        if(event.keyCode === 13) {
+            todoEvent();
+            document.getElementById('addBtn').onclick=todoEvent;
+        }
+    });
+    
+    function todoEvent(){
       
       let text=document.getElementById("input").value
       if(text==""){
