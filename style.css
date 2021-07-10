@@ -1,4 +1,4 @@
- *{
+    *{
       margin:0;
       padding:0;
     }
@@ -7,10 +7,11 @@
       justify-content:center;  
       background: #000428;  /* fallback for old browsers */
       padding:20px 0;
-background: -webkit-linear-gradient(left, #004e92, #000428);
-background: -moz-linear-gradient(left, #004e92, #000428);
-background: -o-linear-gradient(left, #004e92, #000428);
-background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: -webkit-linear-gradient(left, #004e92, #000428);
+      background: -moz-linear-gradient(left, #004e92, #000428);
+      background: -o-linear-gradient(left, #004e92, #000428);
+      background: linear-gradient(to right, #004e92, #000428);  
+/* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     }
 

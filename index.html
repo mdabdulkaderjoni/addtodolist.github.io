@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Add Todo</title>
+  <title>Joni's Add Todo</title>
   <link rel="stylesheet" href="style.css">
   <!--Font awesome kit-->
     <script src="https://kit.fontawesome.com/5862eaaa58.js"></script>
@@ -11,30 +11,29 @@
 </head>
 <body>
 
-<div class="main-app">
-  <div class="header">
-    <div class="head-text">
-      <h1>Joni's Todo-App</h1>
+<section class="main-app">
+
+    <div class="header">
+        <div class="head-text">
+           <h1>Joni's Todo-App</h1>
+        </div>
+        <div class="input-field">
+          <input id="input" autocomplete="off" type="text">
+          <button id="addBtn">Add</button> 
+        </div> 
+     </div>
+  
+    <div class="all-todos">
+        <div class="dash-board">
+            <p>Total Task <span id="total-task" class="task-value">0</span></p>
+            <p>Task Completed <span id="completed-task" class="task-value">0</span></p>
+            <p>Task Remaining <span id="remaining-task" class="task-value">0</span><p>
+         </div>
+        <div id="container">  </div>
+
     </div>
-    <div class="input-field">
-     
-      <input id="input" autocomplete="off" type="text">
-      <button id="addBtn">Add</button> 
-  
-    </div> 
-  </div>
-  
-<div class="all-todos">
-   
-  <div class="dash-board">
-    <p>Total Task <span id="total-task" class="task-value">0</span></p>
-    <p>Task Completed <span id="completed-task" class="task-value">0</span></p>
-    <p>Task Remaining <span id="remaining-task" class="task-value">0</span><p>
-  </div>
-  
-  <div id="container">  </div>
-    </div>
-</div>
+
+</section>
 
   <script src="app.js"></script>
 </body>

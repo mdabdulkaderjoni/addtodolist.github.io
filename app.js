@@ -1,4 +1,4 @@
-let addBtn=document.getElementById('addBtn');
+    let addBtn=document.getElementById('addBtn');
     let container=document.getElementById('container');
     let input=document.getElementById("input");
     let total=0; 
@@ -23,7 +23,7 @@ let addBtn=document.getElementById('addBtn');
     }
     
     
-    <!-- Add button event -->
+    // Add button event 
     function todoEvent(){     
       let text=document.getElementById("input").value
       if(text==""){
@@ -41,7 +41,7 @@ let addBtn=document.getElementById('addBtn');
       }
     }
 
-    <!-- Create element after event -->
+    // Create element after event 
     function createElement(){
               let text=document.getElementById('input').value;
         let div=document.createElement('DIV');
@@ -55,7 +55,7 @@ let addBtn=document.getElementById('addBtn');
 
     }
     
-    <!-- update values -->
+    //update values 
     function update(){
       totalTask();
       completedTask();
@@ -64,7 +64,7 @@ let addBtn=document.getElementById('addBtn');
     
     
 
-    <!-- remove todo event -->
+    //remove todo event
     function remove(){
       
       let removeIcon=document.getElementsByClassName('fa-times');
@@ -116,7 +116,7 @@ let addBtn=document.getElementById('addBtn');
    }
   
    
-    <!-- Event Listener -->  
+    // onenter and onclick Event Listener 
     addBtn.onclick=todoEvent;
 
     input.addEventListener("keyup", function(event) {  
