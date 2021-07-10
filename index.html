@@ -4,146 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Add Todo</title>
-  <style>
-    *{
-      margin:0;
-      padding:0;
-    }
-    body{
-      
-      display:flex;
-      justify-content:center;
-      
-      background: #000428;  /* fallback for old browsers */
-      padding:20px 0;
-background: -webkit-linear-gradient(left, #004e92, #000428);
-background: -moz-linear-gradient(left, #004e92, #000428);
-background: -o-linear-gradient(left, #004e92, #000428);
-background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    }
-    .main-app{
-      width:450px;
-      
-    }
-    .header h1{
-      color:white;
-      text-align:center;
-      
-      font-family:arial;
-    }
-    .head-text{
-      width:400px;
-      margin:10px 0;
-    }
+  <link rel="stylesheet" href="style.css">
+  <!--Font awesome kit-->
+    <script src="https://kit.fontawesome.com/5862eaaa58.js"></script>
     
-    .input-field{
-      padding:5px;
-      background-color:white;
-      display:inline-block;
-      height:auto;
-      width:100%;
-      display:flex;
-      position:relative;
-      box-sizing:border-box;
-      margin-bottom:10px;
-      border-radius:3px;
-      
-    }
-    .input-field input{
-      height:35px;
-      width:82%;
-      font-size:22px;
-      border:2px solid white;
-      background-color:white;
-      outline: 0;
-      border-width: 0 0 2px;
-      border-color: white;
-      
-    }
-    input:focus {
-      border-color:black;
-    }
-    .input-field button{
-      position:absolute;
-      right:8px;
-      font-size:22px;
-      padding:5px 10px;
-      
-      background-color:#191970;
-      border-radius:2px;
-      color:white;
-      border:none;
-      
-    }
-    .all-todos{
-      background-color:white;
-      border-radius:3px;
-    }
-    .dash-board{
-      display:flex;
-      margin-left:5px;
-    }
-    .dash-board p{
-      font-size:18px;
-      font-family:arial;
-      padding:15px 6px;
-    }
-    .line{
-      text-decoration:line-through;
-    }
-    #container{
-      width:100%;
-      font-family:arial;
-      display:inline-block;
-      padding:10px 5px;
-      display:none;
-    }
-    .todo{
-      margin-bottom:10px;
-      width:100%;
-    }
-    .todo span{
-      font-size:20px;
-      margin-right:10px;
-      padding:5px 8px;
-    }
-    .task-value{
-      color:red;
-      font-weight:600;
-    }
-    .todo button{
-      font-size:16px;
-      background-color:#6B49A2;
-      padding:5px 8px;
-      font-weight:500;
-      border:none;
-      outline:none;
-      border-radius:3px;
-      color:white;
-    }
-    
-    @media only screen and (max-width: 450px){
-      .header, .head-text, .input-field, .all-todos, .dash-board{
-        width:100%;
-      }
-      .main-app{
-        width:100%;
-        
-      }
-      body{
-        display:block;
-        padding:20px 5px;
-      }
-    }
-    
-  </style>
 </head>
 <body>
+
 <div class="main-app">
   <div class="header">
     <div class="head-text">
-      <h1>Todo App</h1>
+      <h1>Joni's Todo-App</h1>
     </div>
     <div class="input-field">
      
@@ -164,116 +35,10 @@ background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safar
   <div id="container">  </div>
     </div>
 </div>
-  <script>
-    let addBtn=document.getElementById('addBtn');
-    let container=document.getElementById('container');
-    let input=document.getElementById("input");
-    let total=0; 
-    let completed=0;
-    let remaining=0;
-    
-    function totalTask(){
-      let totalTask=document.getElementById('total-task');
-      totalTask.innerHTML=total;
-    }
-    function completedTask(){
-      let completedTask=document.getElementById('completed-task');
-      completedTask.innerHTML=completed;
-    }
-    function remainingTask(){     
-      let totalTask=document.getElementById('remaining-task');
-      totalTask.innerHTML=total-completed;
-    }
-    
-    function remove(){
-      let icon=document.getElementsByClassName('icon');
-      let todo=document.getElementsByClassName('todo');
-      remainingTask();
-      for(let i=0;i<icon.length;i++){
-        icon[i].onclick=function(){
-          if(completed>0){
-            completed--;
-            completedTask();
-          }
-          
-          total--;
-          totalTask();
-          icon[i].parentElement.style.display='none';
-          
-          if(total==0){
-            display("none");
-          }
-          remainingTask();
-        }
-      }
-      
-      
-    }  
-    
-    function display(value){
-      document.getElementById('container').style.display=value;
-    }
-    
-    addBtn.onclick=todoEvent;
 
-    input.addEventListener("keyup", function(event) {  
-        if(event.keyCode === 13) {
-            todoEvent();
-            document.getElementById('addBtn').onclick=todoEvent;
-        }
-    });
-    
-    function todoEvent(){
-      
-      let text=document.getElementById("input").value
-      if(text==""){
-        alert("Add a todo");
-      }else{
-        total++;
-        display("inline-block");
-        
-        let text=document.getElementById('input').value;
-        let div=document.createElement('DIV');
-        div.className='todo';
-        div.innerHTML=`<span class="task">${text}</span> <button class="done-btn">Done</button> <button class="icon">X</button>`;
-        container.appendChild(div);
-        document.getElementById('input').value="";
-        
-        done();
-        remove();
-        totalTask();
-        remainingTask();
-        
-      }
-    }
-    function done(){
-        
-        let doneBtn=document.getElementsByClassName("done-btn");
-        let task=document.getElementsByClassName("task");
-        for(let i=0;i<doneBtn.length;i++){
-            doneBtn[i].onclick=function(){
-              if(doneBtn[i].innerHTML=="Done"){
-                completed++;
-                completedTask();
-                remainingTask();
-              }else{
-                completed--;
-                completedTask();
-                remainingTask();
-              }
-              
-              task[i].classList.toggle('line');
-              doneBtn[i].innerHTML=doneBtn[i].innerHTML=="Done"?"Undo":"Done";
-              
-            }
-        }
-        
-    }
-    
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
   
   
-  
-  
+ 

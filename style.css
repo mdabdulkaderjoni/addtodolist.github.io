@@ -1,0 +1,148 @@
+ *{
+      margin:0;
+      padding:0;
+    }
+    body{ 
+      display:flex;
+      justify-content:center;  
+      background: #000428;  /* fallback for old browsers */
+      padding:20px 0;
+background: -webkit-linear-gradient(left, #004e92, #000428);
+background: -moz-linear-gradient(left, #004e92, #000428);
+background: -o-linear-gradient(left, #004e92, #000428);
+background: linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+
+    .main-app{
+      width:450px;
+      
+    }
+    .header h1{
+      color:white;
+      text-align:center;
+      
+      font-family:arial;
+    }
+    .head-text{
+      width:400px;
+      margin:10px 0;
+    }
+    
+    .input-field{
+      padding:5px;
+      background-color:white;
+      display:inline-block;
+      height:auto;
+      width:100%;
+      display:flex;
+      position:relative;
+      box-sizing:border-box;
+      margin-bottom:10px;
+      border-radius:3px;
+      
+    }
+    .input-field input{
+      height:35px;
+      width:82%;
+      font-size:22px;
+      border:2px solid white;
+      background-color:white;
+      outline: 0;
+      border-width: 0 0 2px;
+      border-color: white;
+      
+    }
+    input:focus {
+      border-color:black;
+    }
+    .input-field button{
+      position:absolute;
+      right:8px;
+      font-size:22px;
+      padding:5px 10px;
+      
+      background-color:#191970;
+      border-radius:2px;
+      color:white;
+      border:none;
+      
+    }
+    .all-todos{
+      background-color:white;
+      border-radius:3px;
+    }
+    .dash-board{
+      display:flex;
+      margin-left:5px;
+    }
+    .dash-board p{
+      font-size:18px;
+      font-family:arial;
+      padding:15px 6px;
+    }
+    
+    .line{
+      text-decoration:line-through;
+    }
+    #container{
+      width:100%;
+      font-family:arial;
+      display:inline-block;
+      padding:10px 5px;
+      display:none;
+    }
+    .todo{
+      margin-bottom:10px;
+      width:100%;
+    }
+    .todo span{
+      font-size:20px;
+    }
+    .task{
+      display:inline-block;
+      width:350px;
+    }
+    .task-value{
+      color:red;
+      font-weight:600;
+    }
+    
+
+    .fa:hover{
+      opacity:0.7;
+    }
+   
+    .fa{
+      font-size:20px;
+      color:white;
+      cursor:pointer;
+      padding:2px 8px;
+      border-radius:4px;
+    }
+    .fa-minus{
+      background-color:green;
+    }
+    .fa-times{
+      background-color:red;
+    }
+    .fa-plus{
+      background-color:gray;
+    }
+    .fa:hover{
+      opacity:0.7;
+    } 
+    @media only screen and (max-width: 450px){
+      .header,.task, .head-text, .input-field, .all-todos, .dash-board{
+        width:100%;
+      }
+      .main-app{
+        width:100%;
+        
+      }
+      body{
+        display:block;
+        padding:20px 5px;
+      }
+    }
+    
